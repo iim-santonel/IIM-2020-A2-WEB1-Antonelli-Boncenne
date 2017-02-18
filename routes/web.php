@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('/article', 'ArticleController');
 
+Route::resource('/comment', 'CommentController');
+
 Route::get('/user', function() {
     return view('user');
 });
