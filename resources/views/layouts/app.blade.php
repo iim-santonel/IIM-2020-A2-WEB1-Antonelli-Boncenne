@@ -58,6 +58,7 @@
                         <li><a href="{{ url('/article') }}">Blog</a></li>
                         <li><a href="{{ url('/article/create') }}">Publier</a></li>
                         <li><a href="{{ url('/user') }}">Profil</a></li>
+                        <li><a href="{{ url('/contact') }}">Contact</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
