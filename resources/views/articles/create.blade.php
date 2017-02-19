@@ -19,6 +19,10 @@
                             <div class="form-group">
                                 <textarea name="content" placeholder="Votre contenu" class="form-control"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label name="image" for="exampleInputFile">Ajoutez une image</label>
+                                <input type="file" id="exampleInputFile">
+                            </div>
 
                             <input type="submit" value="Publier" class="btn btn-info">
                         </form>

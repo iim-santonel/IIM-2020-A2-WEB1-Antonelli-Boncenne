@@ -30,3 +30,6 @@ Route::resource('/admin', 'AdminController');
 Route::get('/user', function() {
     return view('user');
 });
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+
