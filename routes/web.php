@@ -32,3 +32,6 @@ Route::get('/user', function() {
 Route::get('/admin', function() {
     return view('admin');
 });
+
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
