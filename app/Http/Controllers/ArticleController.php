@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -75,7 +76,8 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
-        return view('articles.show', compact('article'));
+        $comments = Comment::all();
+        return view('articles.show', compact('article','comments'));
     }
 
     /**

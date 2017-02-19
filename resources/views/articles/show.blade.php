@@ -27,6 +27,30 @@
                             <input type="submit" value="Supprimer" class="btn btn-danger">
                         </form>
 
+                        <div class="panel-heading">{{ $article->title }}</div>
+                        <div class="panel-body">
+                            {{ $article->content }}
+
+                            <br>
+                            <br>
+                            <h2>Commentaire</h2>
+                                <li>{{$comments }}</li>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Publier un commentaire</div>
+
+                                <div class="panel-body">
+                                    <form action="{{ route('comment.store') }}" method="POST">
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group">
+                                            <textarea name="content" placeholder="Votre contenu" class="form-control"></textarea>
+                                        </div>
+
+                                        <input type="submit" value="Publier" class="btn btn-info">
+                                    </form>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

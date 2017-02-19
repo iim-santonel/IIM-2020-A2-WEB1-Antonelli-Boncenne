@@ -25,9 +25,12 @@ Route::resource('/article', 'ArticleController');
 
 Route::resource('/comment', 'CommentController');
 
+Route::resource('/admin', 'AdminController');
+
 Route::get('/user', function() {
     return view('user');
 });
+
 
 Route::get('/admin', function() {
     return view('admin');
@@ -35,3 +38,4 @@ Route::get('/admin', function() {
 
 Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
 Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+

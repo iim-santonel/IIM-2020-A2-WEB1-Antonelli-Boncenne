@@ -4,30 +4,41 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-
-                @include('messages.errors')
-
+                @include('messages.success')
                 <div class="panel panel-default">
-                    <div class="panel-heading">Modifier un article</div>
+                    <div class="panel-heading">Liste des articles</div>
 
                     <div class="panel-body">
-                        <form action="{{ route('article.update', $article->id) }}" method="POST">
+                        <ul>
+                            @foreach($articles as $article)
+                                <li><a href="{{ route('article.show', $article->id) }}">{{ $article->title }}</a></li>
+                                <form method="POST" action="{{ route('article.destroy', $article->id) }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="submit" value="Supprimer" class="btn btn-danger">
+                                </form>
+                            @endforeach
+                        </ul>
 
-                            <input type="hidden" name="_method" value="PUT">
+                        {{ $articles->links() }}
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Liste des commentaires</div>
 
-                            {{ csrf_field() }}
+                    <div class="panel-body">
+                        <ul>
+                            @foreach($articles as $article)
+                                <li><a href="{{ route('admin.show', $article->id) }}">{{ $article->title }}</a></li>
+                                <form method="POST" action="{{ route('admin.destroy', $article->id) }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="delete">
+                                    <input type="submit" value="Supprimer" class="btn btn-danger">
+                                </form>
+                            @endforeach
+                        </ul>
 
-                            <div class="form-group">
-                                <input type="text" name="title" placeholder="Titre" class="form-control"
-                                       value="{{ $article->title }}">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="content" placeholder="Votre contenu"
-                                          class="form-control">{{ $article->content }}</textarea>
-                            </div>
-
-                            <input type="submit" value="Publier" class="btn btn-info">
-                        </form>
+                        {{ $articles->links() }}
                     </div>
                 </div>
             </div>

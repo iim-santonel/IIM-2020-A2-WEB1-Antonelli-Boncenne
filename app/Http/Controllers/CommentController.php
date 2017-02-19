@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
+use App\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -13,7 +16,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $comment = Comment::all('id', 'ASC')->where('article_id', $id);
+        return view('article.show', ['article' => $id, 'comment' => $comment]);
     }
 
     /**
@@ -23,20 +27,37 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('comments.create');
-
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(Request $request ,$id)
     {
-        //
+        $this->validate($request,
+            [
+                'content' => 'required|min:10'
+            ],
+            [
+                'content.required' => 'Contenu requis',
+                'content.min' => 'Minimum 10 caractères'
+            ]);
+
+        Comment::create(array(
+            'user_id' => Auth::user()->id,
+            'article_id' => $id,
+            //Ne tenez pas compte de "l'erreur"
+            'content' => $request->content,
+        ));
+        return redirect()->route('article.show',$id)->with('success', 'Le comment a bien été publié');
     }
+
 
     /**
      * Display the specified resource.
