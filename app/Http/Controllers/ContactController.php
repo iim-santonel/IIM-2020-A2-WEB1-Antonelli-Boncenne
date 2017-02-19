@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +57,7 @@ class ContactController extends Controller
             ->fill($input)
             ->save();
 
-        return redirect()->route('contact.index')->with('success', 'L\'article a bien été publié');
+        return redirect()->route('contact.index')->with('success', 'Le message à bien été envoyé !');
     }
 
     /**
