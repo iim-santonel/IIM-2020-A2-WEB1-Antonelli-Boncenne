@@ -22,6 +22,6 @@ class IsAdmin
 
         return redirect()
             ->route('article.index')
-            ->with('success', 'Vous n\'avez pas les droits nécessaires.');
+                ->with('success', 'Vous ne pouvez pas vous connecter');
     }
 }
