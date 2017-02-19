@@ -16,12 +16,12 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check() && Auth::user()->isAdmin) {
+        if(Auth::user()->email == 'test@test.com') {
             return $next($request);
         }
 
         return redirect()
             ->route('article.index')
-                ->with('success', 'Vous ne pouvez pas vous connecter');
+                ->with('success', "Vous n'êtes pas administrateur, il faut le compte administrateur avec l'adresse admin@gmail.com");
     }
 }

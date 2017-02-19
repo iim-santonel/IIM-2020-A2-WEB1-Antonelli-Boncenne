@@ -25,10 +25,8 @@ Route::resource('/article', 'ArticleController');
 
 Route::resource('/comment', 'CommentController');
 
+Route::resource('/admin', 'AdminController');
+
 Route::get('/user', function() {
     return view('user');
-});
-
-Route::get('/admin', function() {
-    return view('admin');
 });
